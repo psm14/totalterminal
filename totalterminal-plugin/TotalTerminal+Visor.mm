@@ -438,9 +438,9 @@
     NSRect frame = [win frame];
     int shift = 0; // see http://code.google.com/p/blacktree-visor/issues/detail?id=19
 
-    if (screen == [[NSScreen screens] objectAtIndex:0]) {
+    /*if (screen == [[NSScreen screens] objectAtIndex:0]) {
         shift = 21;                                                  // menu area
-    }
+    }*/
     NSString* position = [self position];
     if ([position hasPrefix:@"Top"]) {
         frame.origin.y = screenRect.origin.y + NSHeight(screenRect) - round(offset * (NSHeight(frame) + shift));

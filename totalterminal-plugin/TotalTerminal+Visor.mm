@@ -436,14 +436,10 @@
     NSScreen* screen = [self screen];
     NSRect screenRect = [screen frame];
     NSRect frame = [win frame];
-    int shift = 0; // see http://code.google.com/p/blacktree-visor/issues/detail?id=19
-
-    /*if (screen == [[NSScreen screens] objectAtIndex:0]) {
-        shift = 21;                                                  // menu area
-    }*/
     NSString* position = [self position];
     if ([position hasPrefix:@"Top"]) {
-        frame.origin.y = screenRect.origin.y + NSHeight(screenRect) - round(offset * (NSHeight(frame) + shift));
+        // Shift the window up by one so it doesn't leave a one-pixel border at the top
+        frame.origin.y = screenRect.origin.y + NSHeight(screenRect) - round(offset * NSHeight(frame) - 1);
     }
     if ([position hasPrefix:@"Left"]) {
         frame.origin.x = screenRect.origin.x - NSWidth(frame) + round(offset * NSWidth(frame));
